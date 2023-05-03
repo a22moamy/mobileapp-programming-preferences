@@ -14,5 +14,9 @@ public class SecondActivity extends AppCompatActivity {
         Toolbar toolbar = findViewById(R.id.toolbar2);
         setSupportActionBar(toolbar);
         Bundle extras = getIntent().getExtras();
+
+
+
+
     }
 }

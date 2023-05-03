@@ -2,7 +2,7 @@
     <string name="app_name">Shared Preferences</string>
     <string name="paragraph">Vad är din favoritfärg?</string>
     <string name="favoritfarg">Favoritfärg</string>
-    <string name="skicka">Skicka</string>
+    <string name="skicka">Spara information</string>
     <string name="hejsan">Hejsan!</string>
     <string name="buttonMain">Ta mig till nästa sida!</string>
 </resources>
