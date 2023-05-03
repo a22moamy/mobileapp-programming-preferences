@@ -14,9 +14,8 @@ import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
 
-    private SharedPreferences myPreferenceRef;
-    private SharedPreferences.Editor myPreferenceEditor;
-
+    private SharedPreferences sharedPreferences;
+    TextView prefTextRef;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -32,24 +31,15 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-        myPreferenceRef = getPreferences(MODE_PRIVATE);
-        myPreferenceEditor = myPreferenceRef.edit();
-        TextView prefTextRef=new TextView(this);
-        prefTextRef=(TextView)findViewById(R.id.preftextview);
-        prefTextRef.setText(myPreferenceRef.getString("MyAppPreferenceString", "No preference found."));
+    }
+    @Override
+    public void onResume(){
+        super.onResume();
+        sharedPreferences = getSharedPreferences("preferences", MODE_PRIVATE);
+        prefTextRef = findViewById(R.id.preftextview);
 
-        Bundle extras = getIntent().getExtras();
-        if (extras != null) {
-            String farg = extras.getString("farg");
-            // Do something with the name and number
-            Log.d("hej", farg);
-            myPreferenceEditor.putString("MyAppPreferenceString", farg);
-            myPreferenceEditor.apply();
-            prefTextRef.setText(myPreferenceRef.getString("MyAppPreferenceString", farg));
-        }
+        prefTextRef.setText(sharedPreferences.getString("MyAppPreferenceString", "No preference found."));
 
     }
-
-
 
 }
