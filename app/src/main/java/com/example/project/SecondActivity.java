@@ -28,9 +28,10 @@ public class SecondActivity extends AppCompatActivity{
         button2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                EditText newPrefText = findViewById(R.id.prefEditText);
+
                 sharedPreferences = getSharedPreferences("preferences", MODE_PRIVATE);
                 myPreferenceEditor = sharedPreferences.edit();
+                EditText newPrefText = findViewById(R.id.prefEditText);
                 myPreferenceEditor.putString("MyAppPreferenceString", newPrefText.getText().toString());
                 myPreferenceEditor.apply();
             }
