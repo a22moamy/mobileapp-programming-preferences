@@ -2,12 +2,14 @@ package com.example.project;
 
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import android.content.Intent;
+import android.widget.EditText;
 import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
@@ -30,13 +32,21 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-
         myPreferenceRef = getPreferences(MODE_PRIVATE);
         myPreferenceEditor = myPreferenceRef.edit();
-
         TextView prefTextRef=new TextView(this);
         prefTextRef=(TextView)findViewById(R.id.preftextview);
         prefTextRef.setText(myPreferenceRef.getString("MyAppPreferenceString", "No preference found."));
+
+        Bundle extras = getIntent().getExtras();
+        if (extras != null) {
+            String farg = extras.getString("farg");
+            // Do something with the name and number
+            Log.d("hej", farg);
+            myPreferenceEditor.putString("MyAppPreferenceString", farg);
+            myPreferenceEditor.apply();
+            prefTextRef.setText(myPreferenceRef.getString("MyAppPreferenceString", farg));
+        }
 
     }
 
